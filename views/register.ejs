@@ -566,7 +566,7 @@ function validate(){
                                     }
         
                                     var alphanum = document.querySelector('#alphanum i');
-                                    if (ppassword.match(/[!@#$%^&*()_+[\]{};':"\\|,.<>?]/)) {
+                                    if (password.match(/[!@#$%^&*()_+[\]{};':"\\|,.<>?]/)) {
                                         alphanum.classList.remove('fa-circle', 'not-met');
                                         alphanum.classList.add('fa-check', 'met');
                                         alphanumMet = true;
