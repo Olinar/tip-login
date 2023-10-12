@@ -383,6 +383,7 @@ svg {
                 <li id="length"><i class="fa-solid fa-circle not-met" style="margin-right: 5px;"></i>At least 8 characters</li>
                 <li id="uppercase"><i class="fa-solid fa-circle not-met" style="margin-right: 5px;"></i>At least one uppercase letter</li>
                 <li id="number"><i class="fa-solid fa-circle not-met" style="margin-right: 5px;"></i>At least one number</li>
+                <li id="alphanum"><i class="fa-solid fa-circle not-met" style="margin-right: 5px;"></i>At least one special character</li>
                 </ul>
             </div>
           
@@ -486,7 +487,7 @@ document.getElementById('register-form').addEventListener('submit', (e) => {
     .then(data => {
       if(data.success){
         window.location.href = `/login`;
-      }
+      } 
     })
   } else {
     console.log("wrong pass");
@@ -530,7 +531,7 @@ function validate(){
                                     var lengthMet = false;
                                     var uppercaseMet = false;
                                     var numberMet = false;
-        
+                                    var alphanumMet = false;
                                     
                                     var lengthIcon = document.querySelector('#length i');
                                     if (password.length >= 8) {
@@ -564,7 +565,16 @@ function validate(){
                                         numberIcon.classList.add('fa-circle', 'not-met');
                                     }
         
-                                    
+                                    var alphanum = document.querySelector('#alphanum i');
+                                    if (ppassword.match(/[!@#$%^&*()_+[\]{};':"\\|,.<>?]/)) {
+                                        alphanum.classList.remove('fa-circle', 'not-met');
+                                        alphanum.classList.add('fa-check', 'met');
+                                        alphanumMet = true;
+                                    } else {
+                                        alphanum.classList.remove('fa-check', 'met');
+                                        alphanum.classList.add('fa-circle', 'not-met');
+                                    }
+
                                     if (lengthMet && uppercaseMet && numberMet) {
                                         document.getElementById('submit').disabled = false;
                                         register_btn.disabled = false;
