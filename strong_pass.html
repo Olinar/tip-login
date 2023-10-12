@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .not-met {
+            color: #d3d3d3;
+            }
+            
+            .met {
+            color: green;
+            }
+
+            ul {
+            list-style-type: none;
+            }			
+    </style>
+    <script src="https://kit.fontawesome.com/cd80ff2ac0.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="col_full">
+        <label for="register-form-password">Password:</label>
+        <input type="password" id="password" name="password" value="" class="form-control">
+        <ul id="password-checks" style="margin-top: 5px;">
+        <li id="length"><i class="fa-solid fa-circle not-met" style="margin-right: 5px;"></i>At least 8 characters</li>
+        <li id="uppercase"><i class="fa-solid fa-circle not-met" style="margin-right: 5px;"></i>At least one uppercase letter</li>
+        <li id="number"><i class="fa-solid fa-circle not-met" style="margin-right: 5px;"></i>At least one number</li>
+        </ul>
+        
+    </div>
+
+    <script>
+
+        document.getElementById('password').addEventListener('keyup', function (e) {
+                                    var password = e.target.value;
+        
+                                    var lengthMet = false;
+                                    var uppercaseMet = false;
+                                    var numberMet = false;
+        
+                                    
+                                    var lengthIcon = document.querySelector('#length i');
+                                    if (password.length >= 8) {
+                                        lengthIcon.classList.remove('fa-circle', 'not-met');
+                                        lengthIcon.classList.add('fa-check', 'met');
+                                        lengthMet = true;
+                                    } else {
+                                        lengthIcon.classList.remove('fa-check', 'met');
+                                        lengthIcon.classList.add('fa-circle', 'not-met');
+                                    }
+        
+                                    // Check uppercase
+                                    var uppercaseIcon = document.querySelector('#uppercase i');
+                                    if (password.match(/[A-Z]/)) {
+                                        uppercaseIcon.classList.remove('fa-circle', 'not-met');
+                                        uppercaseIcon.classList.add('fa-check', 'met');
+                                        uppercaseMet = true;
+                                    } else {
+                                        uppercaseIcon.classList.remove('fa-check', 'met');
+                                        uppercaseIcon.classList.add('fa-circle', 'not-met');
+                                    }
+        
+                                    // Check number
+                                    var numberIcon = document.querySelector('#number i');
+                                    if (password.match(/\d/)) {
+                                        numberIcon.classList.remove('fa-circle', 'not-met');
+                                        numberIcon.classList.add('fa-check', 'met');
+                                        numberMet = true;
+                                    } else {
+                                        numberIcon.classList.remove('fa-check', 'met');
+                                        numberIcon.classList.add('fa-circle', 'not-met');
+                                    }
+        
+                                    
+                                    if (lengthMet && uppercaseMet && numberMet) {
+                                        document.getElementById('submit').disabled = false;
+                                    } else {
+                                        document.getElementById('submit').disabled = true;
+                                    }
+                                    });
+                                
+        </script>
+</body>
+</html>
+
+

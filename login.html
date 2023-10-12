@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In with Auth0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Raleway:wght@800&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://raw.githubusercontent.com/Olinar/assets/main/assets/logo.ico">
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary-color: #fec10e;
+  --secondary-color: white;
+}
+.dark-theme {
+  --primary-color: #000000;
+  --secondary-color: rgb(179, 179, 179);
+}
+body {
+  color: #231f20;
+  background-color: var(--primary-color);
+  font-family: "Montserrat", sans-serif;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+.icondiv {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 35%;
+  height: 50px;
+}
+#icon {
+  width: 30px;
+  cursor: pointer;
+  flex: 1;
+}
+.login {
+  display: flex;
+  align-items: center;
+}
+.card {
+  font-family: "Raleway", sans-serif;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 700px;
+
+  background-color: var(--secondary-color);
+  text-align: center;
+
+  padding: 53px 105px;
+  border-radius: 20px;
+  border: 2px solid #2a2420;
+}
+.card h1 {
+  font-size: 2.25em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  font-family: "Montserrat", sans-serif;
+  font-size: inherit;
+}
+.card button:not(.auth-btn) {
+  width: 100%;
+  height: 45px;
+  border-radius: 4px;
+  border: 2px solid #2a2420;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  cursor: pointer;
+  margin: 20px 0;
+  margin-bottom: 20px;
+}
+
+.card .auth-btn {
+  width: 100%;
+  height: 45px;
+  border-radius: 4px;
+  border: 2px solid #2a2420;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.card p {
+  margin-left: 15px;
+  font-weight: 600;
+}
+a {
+  text-decoration: none;
+}
+.logo {
+  width: 63px;
+  height: 44px;
+  border-radius: 10px;
+}
+.hr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+hr {
+  width: 100%;
+  height: 1px;
+  background-color: #333031;
+  border: none;
+}
+.hr p {
+  color: #333031;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  margin: 0px 10px;
+}
+.input input, .password-container input {
+  width: 100% !important;
+  height: 45px;
+  border-radius: 4px;
+  border: 2px solid #2a2420;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  display: block;
+  margin-top: 24px;
+
+  font-family: "Montserrat", sans-serif;
+  padding: 0px 11px;
+  font-size: 16px;
+}
+button#login {
+  background-color: #fec10e;
+  color: #231f20;
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+}
+button#signup {
+  background-color: #2a2420;
+  color: white;
+  font-size: 20px;
+  font-weight: 800;
+  margin-top: 24px;
+}
+.reset {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.reset a {
+  text-decoration: none;
+  color: #231f20;
+}
+.input input:focus {
+  border: 2px solid #fec10e;
+}
+input#password, #confirmpassword {
+  border: none;
+  border-radius: 0;
+  margin-top: 0px;
+  padding-left: 0px;
+}
+.password-container {
+  border-radius: 4px;
+  border: 2px solid #2a2420;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding: 0px 11px;
+  width: 100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+svg {
+  color: #231f20;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.password-container:focus-within {
+    border: 2px solid #fec10e;
+}
+  </style>
+</head>
+<body>
+  <main>
+       <div class="icondiv">
+        <img src="https://github.com/Olinar/assets/blob/main/assets/moon.png?raw=true" id="icon">
+      </div>
+    <div class="card">
+      <h1>
+        <span><img class="logo" src="https://github.com/Olinar/assets/blob/main/assets/tip.png?raw=true" /></span>
+        <p>Sign in to TIAYPI</p>
+      </h1>
+
+      <a href="#" id="btn-google">
+        <button class="auth-btn" style="margin-top: 30px;">
+          <span><svg enable-background="new 0 0 48 48" height="20" viewBox="0 0 48 48" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m43.611 20.083h-1.611v-.083h-18v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657c-3.572-3.329-8.35-5.382-13.618-5.382-11.045 0-20 8.955-20 20s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z" fill="#ffc107"/><path d="m6.306 14.691 6.571 4.819c1.778-4.402 6.084-7.51 11.123-7.51 3.059 0 5.842 1.154 7.961 3.039l5.657-5.657c-3.572-3.329-8.35-5.382-13.618-5.382-7.682 0-14.344 4.337-17.694 10.691z" fill="#ff3d00"/><path d="m24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238c-2.008 1.521-4.504 2.43-7.219 2.43-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025c3.31 6.477 10.032 10.921 17.805 10.921z" fill="#4caf50"/><path d="m43.611 20.083h-1.611v-.083h-18v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571.001-.001.002-.001.003-.002l6.19 5.238c-.438.398 6.591-4.807 6.591-14.807 0-1.341-.138-2.65-.389-3.917z" fill="#1976d2"/></svg></span>
+          <p>Continue with Google</p>
+        </button>
+      </a>
+      <a href="#" id="btn-github">
+        <button class="auth-btn">
+          <span><svg width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><path d="m12 1a10.89 10.89 0 0 0 -11 10.77 10.79 10.79 0 0 0 7.52 10.23c.55.1.75-.23.75-.52s0-.93 0-1.83c-3.06.65-3.71-1.44-3.71-1.44a2.86 2.86 0 0 0 -1.22-1.58c-1-.66.08-.65.08-.65a2.31 2.31 0 0 1 1.68 1.11 2.37 2.37 0 0 0 3.2.89 2.33 2.33 0 0 1 .7-1.44c-2.44-.27-5-1.19-5-5.32a4.15 4.15 0 0 1 1.11-2.91 3.78 3.78 0 0 1 .11-2.84s.93-.29 3 1.1a10.68 10.68 0 0 1 5.5 0c2.1-1.39 3-1.1 3-1.1a3.78 3.78 0 0 1 .11 2.84 4.15 4.15 0 0 1 1.17 2.89c0 4.14-2.58 5.05-5 5.32a2.5 2.5 0 0 1 .75 2v2.95s.2.63.75.52a10.8 10.8 0 0 0 7.5-10.22 10.89 10.89 0 0 0 -11-10.77" fill="#231f20"/></svg></span>
+          <p>Continue with Github</p>
+        </button>
+      </a>
+
+      <div class="hr">
+        <hr />
+        <p>or</p>
+        <hr />
+      </div>
+      <form id="login-form">
+        <div class="input">
+          <input
+            id="email"
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+            autocomplete="off"
+          />
+          <div class="password-container" style="background-color: white;">
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              name="password"
+              required
+            />
+            <svg
+              id="eye"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="w-6 h-6"
+              style="display: none"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg>
+            <svg
+              id="eye-slash-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
+              />
+            </svg>
+          </div>
+        </div>
+        <div id="err-notice" style="margin-top:5px;color:red;"></div>
+        <div class="confirm">
+          <button id="login" type="submit">Log in</button>
+          <button id="signup" type="button">Create Account</button>
+        </div>
+        <div class="reset">
+          <a href="#">Reset Password</a>
+        </div>
+      </form>
+    </div>
+  </main>
+  <script src="https://cdn.auth0.com/js/auth0/9.23/auth0.min.js"></script>
+  <script>
+     const login_btn = document.getElementById('login');
+     const err_notice = document.getElementById('err-notice');
+    window.addEventListener('load', function() {
+
+      var config = JSON.parse(
+        decodeURIComponent(escape(window.atob('@@config@@')))
+      );
+
+      var leeway = config.internalOptions.leeway;
+      if (leeway) {
+        var convertedLeeway = parseInt(leeway);
+
+        if (!isNaN(convertedLeeway)) {
+          config.internalOptions.leeway = convertedLeeway;
+        }
+      }
+
+      var params = Object.assign({
+        overrides: {
+          __tenant: config.auth0Tenant,
+          __token_issuer: config.authorizationServer.issuer
+        },
+        domain: config.auth0Domain,
+        clientID: config.clientID,
+        redirectUri: config.callbackURL,
+        responseType: 'code'
+      }, config.internalOptions);
+
+      var webAuth = new auth0.WebAuth(params);
+      var captchaContainer = document.querySelector('.captcha-container');
+      
+      
+      // Handle Google login
+      document.getElementById('btn-google').addEventListener('click', function() {
+        webAuth.authorize({
+          connection: 'google-oauth2'
+        }, function(err) {
+          if (err) {
+            displayError(err);
+          }
+        });
+      });
+
+      document.getElementById('btn-github').addEventListener('click', function() {
+        webAuth.authorize({
+          connection: 'github'
+        }, function(err) {
+          if (err) {
+            displayError(err);
+          }
+        });
+      });
+
+      // Attach a submit event listener to your custom form
+document.getElementById('login-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+ 
+  login_btn.disabled = true;
+  login_btn.style.opacity = 0.5;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  // Define the authentication options
+  var authOptions = {
+    username: email,
+    password: password,
+    realm: 'Username-Password-Authentication', // Specify the connection name
+    scope: 'openid profile email',
+  };
+
+  // Authenticate with Auth0
+  webAuth.login(authOptions, function (err, authResult) {
+    if (err) {
+      err_notice.innerText = 'Invalid Password';
+      setTimeout(() => {
+        err_notice.innerText = '';
+      }, 1500)
+      console.error('Authentication error:', err);
+      // Handle authentication error (e.g., show an error message)
+      login_btn.disabled = false;
+      login_btn.style.opacity = 1;
+    } else {
+      console.log('Authentication successful:', authResult);
+      // Redirect the user to your desired page upon successful authentication
+      window.location.href = '/dashboard'; // Change this URL as needed
+      login_btn.disabled = false;
+      login_btn.style.opacity = 1;
+    }
+  });
+});
+    });
+    
+
+
+
+    var icon = document.getElementById('icon');
+
+    icon.onclick = function() {
+    document.body.classList.toggle('dark-theme');
+    if (document.body.classList.contains('dark-theme')) {
+        icon.src = "https://github.com/Olinar/assets/blob/main/assets/sun.png?raw=true"
+    } else {
+        icon.src = "https://github.com/Olinar/assets/blob/main/assets/moon.png?raw=true"
+    }
+    }
+
+    document.getElementById('signup').addEventListener('click', () => {
+        window.location.href = 'http://localhost:3000/register';
+    })
+
+    const eyeIcon = document.querySelector("#eye");
+const eyeSlashIcon = document.querySelector("#eye-slash-icon");
+const password = document.querySelector("#password");
+
+// Add click event listener to the eyeIcon
+eyeIcon.addEventListener("click", function () {
+  const isPasswordVisible = password.getAttribute("type") === "text";
+  password.setAttribute("type", isPasswordVisible ? "password" : "text");
+
+  // Toggle the visibility of the eye and eye-slash icons
+  eyeIcon.style.display = isPasswordVisible ? "none" : "block";
+  eyeSlashIcon.style.display = isPasswordVisible ? "block" : "none";
+});
+
+// Add click event listener to the eyeSlashIcon
+eyeSlashIcon.addEventListener("click", function () {
+  const isPasswordVisible = password.getAttribute("type") === "text";
+  password.setAttribute("type", isPasswordVisible ? "password" : "text");
+
+  // Toggle the visibility of the eye and eye-slash icons
+  eyeIcon.style.display = isPasswordVisible ? "none" : "block";
+  eyeSlashIcon.style.display = isPasswordVisible ? "block" : "none";
+});
+
+
+
+
+</script>
+</body>
+</html>
+
+

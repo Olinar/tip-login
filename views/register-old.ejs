@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Raleway:wght@800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./assets/logo.ico" />
+    <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  color: #231f20;
+  background-color: #fec10e;
+  font-family: "Montserrat", sans-serif;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.card {
+  font-family: "Raleway", sans-serif;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 950px;
+  width: 1200px;
+
+  background-color: white;
+  text-align: center;
+
+  padding: 53px 105px;
+  border-radius: 20px;
+  border: 2px solid #2a2420;
+}
+.card h1 {
+  font-size: 2.25em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  font-family: "Montserrat", sans-serif;
+  font-size: inherit;
+}
+.card button {
+  width: 100%;
+  height: 45px;
+  border-radius: 4px;
+  border: 2px solid #2a2420;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.card p {
+  margin-left: 15px;
+  font-weight: 600;
+}
+a {
+  text-decoration: none;
+}
+.logo {
+  width: 63px;
+  height: 44px;
+  border-radius: 10px;
+}
+.hr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+hr {
+  width: 100%;
+  height: 1px;
+  background-color: #333031;
+  border: none;
+  
+}
+.hr p {
+  color: #333031;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  margin: 0px 10px;
+}
+.name {
+  display: flex;
+  justify-content:  space-between;
+}
+.name input, .birth input, .locale input, #address{
+  width: 30%;
+  height: 45px;
+  border-radius: 4px;
+  border: 2px solid #2a2420;
+
+  background-color: white;
+  margin-top: 24px;
+
+  font-family: "Montserrat", sans-serif;
+  padding: 0px 11px;
+  font-size: 16px;
+}
+.birth {
+  display: flex;
+  justify-content: space-between;
+}
+.birth input {
+  width: 45%;
+}
+.locale {
+  display: flex;
+  justify-content: space-between;
+}
+#address {
+  width: 100%;
+}
+#contact, #email {
+  width: 30%;
+}
+.pass {
+  display: flex;
+  justify-content: space-between;
+}
+.pass input{
+  width: 45%;
+}
+
+button#signup {
+  background-color: #2a2420;
+  color: white;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+
+input#password, #confirmpassword {
+  border: none;
+  border-radius: 0;
+  margin-top: 0px;
+  padding-left: 0px;
+}
+.password-container {
+  border-radius: 4px;
+  border: 2px solid #2a2420;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding: 0px 11px;
+  width: 45%;
+
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+.password-container input {
+  width: 100%;
+  height: 45px;
+  border-radius: 4px;
+  outline: none;
+
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  display: block;
+  margin-top: 24px;
+
+  font-family: "Montserrat", sans-serif;
+  padding: 0px 11px;
+  font-size: 16px;
+}
+svg {
+  color: #231f20;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icondiv {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 35%;
+    height: 50px;
+}
+
+.confirm {
+  margin-top: 70px;
+}
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- <div class="icondiv">
+        <img src="https://github.com/Olinar/assets/blob/main/assets/moon.png?raw=true" id="icon">
+      </div> -->
+      <div class="card">
+        <h1>
+          <span><img class="logo" src="./assets/tip.png" /></span>
+          <p>REGISTER TODAY</p>
+        </h1>
+
+        <div class="hr">
+          <hr />
+          <p>Name</p>
+          <hr />
+        </div>
+
+        <form id="register-form">
+
+          <div class="name">
+              <input name="firstn" type="text" placeholder="First Name" required/>
+              <input name="middlen" type="text" placeholder="Middle Name" required/>
+              <input name="lastn" type="text" placeholder="Last Name" required/>
+            </div>
+          
+            <div class="hr">
+              <hr /><p>Birth Information</p>
+              <hr />
+            </div>
+          
+            <div class="birth">
+              <input name="bdate" type="month" placeholder="Birth Month" required/>
+              <input name="bplace" type="text" placeholder="Place of Birth" required/>
+            </div>
+          
+            <div class="hr">
+              <hr /><p>Location & Contact</p>
+              <hr />
+            </div>
+            
+            <input id="address" name="address" type="text" placeholder="Address" required/>
+            <div class="locale">
+              <input name="zipcode" maxlength= "4" type="text" pattern="[0-9]{4}" placeholder="Zip Code" required/>
+              <input name="contact" type="text"  placeholder="Contact No." required/>
+              <input name="email" type="email" placeholder="Email" required/>
+            </div>
+            
+            <div class="hr">
+              <hr /><p>Password</p>
+              <hr />
+            </div>
+          
+            <div class="pass">
+              <div class="password-container">
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  required
+                />
+                <svg
+                  id="eye"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                  style="display: none"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                <svg
+                  id="eye-slash-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
+                  />
+                </svg>
+              </div>
+              
+              <div class="password-container">
+                <input
+                  id="confirmpassword"
+                  type="password"
+                  placeholder="Confirm Password"
+                  required
+                />
+                <svg
+                  id="eye2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                  style="display: none"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                <svg
+                  id="eye-slash-icon2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
+                  />
+                </svg>
+              </div>
+            </div>
+          
+            <div class="confirm">
+              <div id="err" style="color: red;"></div>
+              <button id="signup">Register</button>
+            </div>
+          </form>
+      </div>
+    </main>
+<script>
+const eyeIcon = document.querySelector("#eye");
+const eyeSlashIcon = document.querySelector("#eye-slash-icon");
+const eyeIcon2 = document.querySelector("#eye2");
+const eyeSlashIcon2 = document.querySelector("#eye-slash-icon2");
+const password = document.querySelector("#password");
+const confirmpassword = document.querySelector('#confirmpassword');
+const err_alert = document.querySelector('#err');
+const register_btn = document.getElementById('signup');
+// Add click event listener to the eyeIcon
+eyeIcon.addEventListener("click", function () {
+  const isPasswordVisible = password.getAttribute("type") === "text";
+  password.setAttribute("type", isPasswordVisible ? "password" : "text");
+
+  // Toggle the visibility of the eye and eye-slash icons
+  eyeIcon.style.display = isPasswordVisible ? "none" : "block";
+  eyeSlashIcon.style.display = isPasswordVisible ? "block" : "none";
+});
+
+// Add click event listener to the eyeSlashIcon
+eyeSlashIcon.addEventListener("click", function () {
+  const isPasswordVisible = password.getAttribute("type") === "text";
+  password.setAttribute("type", isPasswordVisible ? "password" : "text");
+
+  // Toggle the visibility of the eye and eye-slash icons
+  eyeIcon.style.display = isPasswordVisible ? "none" : "block";
+  eyeSlashIcon.style.display = isPasswordVisible ? "block" : "none";
+});
+
+
+// confirm pass eye toggle
+eyeIcon2.addEventListener("click", function () {
+  const isPasswordVisible = confirmpassword.getAttribute("type") === "text";
+  confirmpassword.setAttribute("type", isPasswordVisible ? "password" : "text");
+
+  // Toggle the visibility of the eye and eye-slash icons
+  eyeIcon2.style.display = isPasswordVisible ? "none" : "block";
+  eyeSlashIcon2.style.display = isPasswordVisible ? "block" : "none";
+});
+
+// Add click event listener to the eyeSlashIcon
+eyeSlashIcon2.addEventListener("click", function () {
+  const isPasswordVisible = confirmpassword.getAttribute("type") === "text";
+  confirmpassword.setAttribute("type", isPasswordVisible ? "password" : "text");
+
+  // Toggle the visibility of the eye and eye-slash icons
+  eyeIcon2.style.display = isPasswordVisible ? "none" : "block";
+  eyeSlashIcon2.style.display = isPasswordVisible ? "block" : "none";
+});
+
+// var icon = document.getElementById('icon');
+// var google = document.getElementById('google');
+// // toggle the dark mode and normal mode
+// icon.onclick = function() {
+//    document.body.classList.toggle('dark-theme');
+//    if (document.body.classList.contains('dark-theme')) {
+//       icon.src = "./assets/sun.png"
+//       google.src = "./assets/gg.png";
+//    } else {
+//       icon.src = "./assets/moon.png"
+//       google.src = "./assets/google.png"
+//    }
+// }
+
+//Form Submit
+document.getElementById('register-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  console.log("test");
+
+  register_btn.style.opacity = 0.5;
+  register_btn.disabled = true;
+
+  setTimeout(() => {
+    register_btn.style.opacity = 1;
+    register_btn.disabled = false;
+  }, 1000)
+
+  if(password.value === confirmpassword.value){
+    let formData = new FormData(e.target);
+    const formDataObject = Object.fromEntries(formData.entries());
+    console.log(formData);
+    fetch('/register/api', {
+      method: 'POST',
+      body: formData,
+      headers: {
+      'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formDataObject),
+    }).then(resp => resp.json())
+    .then(data => {
+      if(data.success){
+        window.location.href = `/login`;
+      }
+    })
+  } else {
+    console.log("wrong pass");
+    err_alert.innerText = 'Password don\'t match';
+    err_alert.style.display = 'block';
+
+    setTimeout(() => {
+          err_alert.innerText = '';
+          err_alert.style.display = 'none';
+        }, 2000)
+  }
+
+})
+
+    </script>
+  </body>
+</html>
