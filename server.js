@@ -6,6 +6,8 @@ const path = require('path');
 const router = require('./routes/index');
 const { auth } = require('express-openid-connect');
 const cors = require('cors');
+const fetch = require('node-fetch');
+
 
 dotenv.load();
 
