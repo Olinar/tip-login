@@ -24,7 +24,10 @@ app.use(express.json());
 
 const config = {
   authRequired: false,
-  auth0Logout: true
+  auth0Logout: true,
+  baseURL: 'https://tip-login.onrender.com/', 
+  clientID: 'zvs6T4LnAVD7x8o2UdA0muwE1osYNjAX',
+  issuerBaseURL: 'https://dev-6w1a8dgnwl0csby5.us.auth0.com',
 };
 
 const port = process.env.PORT || 3000;
